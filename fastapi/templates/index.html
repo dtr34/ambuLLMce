@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload MP3 File</title>
+    <script>
+        // JavaScript to handle form submission
+        async function uploadFile(event) {
+            event.preventDefault();  // Prevent default form submission
+
+            // Get the form data (the MP3 file)
+            const formData = new FormData(document.getElementById("uploadForm"));
+
+            // Send the form data via POST request
+            const response = await fetch("/upload/", {
+                method: "POST",
+                body: formData
+            });
+
+            // Get the JSON response
+            const json = await response.json();
+
+            // Display the response JSON in the text area
+            document.getElementById("responseText").value = JSON.stringify(json, null, 2);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Upload MP3 File</h1>
+    <form id="uploadForm" enctype="multipart/form-data" method="post" onsubmit="uploadFile(event)">
+        <input type="file" name="file" accept=".mp3" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Response:</h2>
+    <textarea id="responseText" rows="10" cols="50" readonly></textarea>
+</body>
+
+</html>

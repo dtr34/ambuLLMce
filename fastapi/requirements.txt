@@ -1,0 +1,12 @@
+uwsgi
+fastapi
+uvicorn
+jinja2
+python-multipart
+llama-index
+llama-index-llms-azure-openai
+llama-index-embeddings-azure-openai
+azure-cognitiveservices-speech
+ffmpeg-python
+pydub
+moviepy
